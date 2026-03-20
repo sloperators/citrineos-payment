@@ -13,7 +13,6 @@ FROM python:3.10-slim
 WORKDIR /app
 COPY . /app
 
-RUN if [ ! -f ./.env ]; then echo "Error: .env File not found"; exit 1; fi
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 RUN rm -rf ./frontend
