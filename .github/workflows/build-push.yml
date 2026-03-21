@@ -1,7 +1,7 @@
 # .github/workflows/build-push.yml
 #
 # Builds and pushes the citrineos-payment Docker image to Artifact Registry,
-# then triggers a deploy in architecture-ocpp.
+# then triggers a deploy in k8s-ocpp.
 #
 # Triggers on push to `stage` or `main`.
 
@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    uses: sloperators/architecture-ocpp/.github/workflows/build-image.yml@main
+    uses: sloperators/k8s-ocpp/.github/workflows/build-image.yml@main
     with:
       service:    citrineos-payment
       dockerfile: Dockerfile
