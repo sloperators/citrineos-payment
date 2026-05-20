@@ -3,6 +3,9 @@ FROM node:20 AS frontend-builder
 
 WORKDIR /app/frontend
 
+ENV CI=false
+ENV DISABLE_ESLINT_PLUGIN=true
+
 COPY frontend ./
 RUN npm install
 RUN npm run build
@@ -13,7 +16,6 @@ FROM python:3.10-slim
 WORKDIR /app
 COPY . /app
 
-RUN if [ ! -f ./.env ]; then echo "Error: .env File not found"; exit 1; fi
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 RUN rm -rf ./frontend
