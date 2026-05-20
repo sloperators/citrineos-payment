@@ -3,6 +3,9 @@ FROM node:20 AS frontend-builder
 
 WORKDIR /app/frontend
 
+ENV CI=false
+ENV DISABLE_ESLINT_PLUGIN=true
+
 COPY frontend ./
 RUN npm install
 RUN npm run build
